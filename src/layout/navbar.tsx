@@ -14,12 +14,25 @@ const navLinks = [
 
 const Navbar = () => {
   const router = useRouter();
+
   return (
-    <div className="flex justify-between items-center sticky top-0 z-50">
-      <div className="navbar bg-[#49BBBD] px-4 lg:px-32">
+    <div className="sticky top-0 z-50">
+      <div className="navbar bg-[#49BBBD] px-4 md:px-8 lg:px-32">
+        {/* Logo */}
         <div className="navbar-start">
-          <Image src="/images/logo.png" alt="logo" width={150} height={50} />
+          <Link href="/">
+            <Image
+              src="/images/logo.png"
+              alt="TOTC logo"
+              width={150}
+              height={50}
+              priority
+              className="w-20 md:w-28 lg:w-[150px] h-auto"
+            />
+          </Link>
         </div>
+
+        {/* Desktop Navigation */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             {navLinks.map((link) => (
@@ -29,7 +42,7 @@ const Navbar = () => {
                   className={
                     router.pathname === link.path
                       ? "font-semibold text-primary"
-                      : "font-normal text-base-content"
+                      : "font-normal text-white"
                   }
                 >
                   {link.name}
@@ -39,31 +52,40 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="navbar-end gap-2 ">
+        {/* Desktop Buttons */}
+        <div className="navbar-end gap-2">
           <Link
             href="/login"
-            className="btn shadow-none border border-white bg-white text-[#5B5B5B] rounded-full w-[110] h-[40] hidden md:flex "
+            className="btn shadow-none border border-white
+                       bg-white text-[#5B5B5B]
+                       rounded-full w-[110px] h-[40px]
+                       hidden md:flex"
           >
             Login
           </Link>
+
           <Link
             href="/login?tab=register"
-            className="btn shadow-none border border-white/30 bg-white/30 text-white rounded-full w-[110] h-[40] hidden md:flex"
+            className="btn shadow-none border border-white
+                       bg-white text-[#5B5B5B]
+                       rounded-full w-[110px] h-[40px]
+                       hidden md:flex"
           >
             Sign Up
           </Link>
         </div>
 
-        {/* Navbar Dropdown */}
+        {/* Mobile Menu */}
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <CiMenuBurger className="size-5" />
+            <CiMenuBurger className="size-5 text-white" />
           </div>
+
           <ul
             tabIndex={0}
-            className="menu dropdown-content  rounded-box z-1 p-2 shadow
-               fixed left-0 right-0 w-screen max-w-screen 
-               lg:hidden bg-[#49BBBD]"
+            className="menu dropdown-content rounded-box z-50 p-4 shadow
+                       fixed left-0 right-0 top-[64px]
+                       w-full lg:hidden bg-[#49BBBD]"
           >
             {navLinks.map((link) => (
               <li key={link.name}>
@@ -72,23 +94,32 @@ const Navbar = () => {
                   className={
                     router.pathname === link.path
                       ? "font-semibold text-primary"
-                      : "font-normal text-base-content"
+                      : "font-normal text-white"
                   }
                 >
                   {link.name}
                 </Link>
               </li>
             ))}
-            <div className=" flex gap-2 mt-3">
+
+            {/* Mobile Buttons */}
+            <div className="flex gap-2 mt-3">
               <Link
                 href="/login"
-                className="btn shadow-none border border-white bg-white text-[#5B5B5B] rounded-full w-[110] h-[40] flex md:hidden "
+                className="btn shadow-none border border-white
+                           bg-white text-[#5B5B5B]
+                           rounded-full w-[110px] h-[40px]
+                           flex md:hidden"
               >
                 Login
               </Link>
+
               <Link
                 href="/login?tab=register"
-                className="btn shadow-none border border-white/30 bg-white/30 text-white rounded-full w-[110] h-[40] flex md:hidden"
+                className="btn shadow-none border border-white
+                           bg-white text-[#5B5B5B]
+                           rounded-full w-[110px] h-[40px]
+                           flex md:hidden"
               >
                 Sign Up
               </Link>
