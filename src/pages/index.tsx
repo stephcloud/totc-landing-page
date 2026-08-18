@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import Hero from "@/Component/LandingPage/hero";
 import OurSuccess from "@/Component/LandingPage/OurSuccess";
-import Features from "@/Component/landingPage/Features";
+import Features from "@/Component/LandingPage/Features";
 import WhatIsTotc from "@/Component/LandingPage/WhatIsTotc";
 import ClassroomFeature from "@/Component/LandingPage/ClassroomFeature";
 import OurFeatures from "@/Component/LandingPage/OurFeatures";
